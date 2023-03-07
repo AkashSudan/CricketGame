@@ -4,11 +4,12 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity @Data
+ @Data
 public class ScoreCard {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -27,9 +28,9 @@ public class ScoreCard {
             team1.add(i);
             team2.add(i);
         }
-        Inning inning=new Inning();
-        inning.startInning(team1,team2,scoreOfTeam1);
-        inning.startInning(team2,team1,scoreOfTeam2);
+
+        Inning.startInning(team1,team2,scoreOfTeam1);
+        Inning.startInning(team2,team1,scoreOfTeam2);
 
     }
 
@@ -41,6 +42,8 @@ public class ScoreCard {
             scoreOfTeam1.add(0);
             scoreOfTeam2.add(0);
         }
+
+
         Inning inning=new Inning();
         inning.startInning(team1,team2,scoreOfTeam1);
         inning.startInning(team2,team1,scoreOfTeam2);

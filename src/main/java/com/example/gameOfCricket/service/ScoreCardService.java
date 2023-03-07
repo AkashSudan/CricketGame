@@ -9,14 +9,14 @@ import java.util.List;
 
 @Service
 public class ScoreCardService {
-    @Autowired
-    private ScoreCardRepository scoreCardRepository;
-    public List<ScoreCard> getAll()
-    {
-        return scoreCardRepository.findAll();
-    }
-    public void addScoreCard(ScoreCard scoreCard)
-    {
-        scoreCardRepository.save(scoreCard);
-    }
+//    @Autowired
+//    private ScoreCardRepository scoreCardRepository;
+//    public List<ScoreCard> getAll()
+//    {
+//        return scoreCardRepository.findAll();
+//    }
+//    public void addScoreCard(ScoreCard scoreCard)
+//    {
+//        scoreCardRepository.save(scoreCard);
+//    }
 }

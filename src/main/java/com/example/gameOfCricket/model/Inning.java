@@ -5,18 +5,26 @@ import com.example.gameOfCricket.service.BowlerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Component
+
 public class Inning {
 
 
-    public void startInning(List<Integer> team1, List<Integer> team2, List<Integer> scoreofTeam1) {
+    public static void  startInning(List<Integer> team1, List<Integer> team2, List<Integer> scoreofTeam1) {
+
+
+
+
         Set<Integer> set = new HashSet<Integer>();
         int overs = 2;
         int balls = 0;
@@ -43,11 +51,8 @@ public class Inning {
                 player1++;
                 continue;
             }
-//            if (player1 <= 5) {
-//                batsmanService.updateScoreOfBatsman(Long.valueOf(team1.get(player1)), score);
-//            } else {
-//                bowlerService.updateScore(Long.valueOf(team1.get(player1)), score);
-//            }
+
+
             if (score % 2 == 1) {
                 int temp = player1;
                 player1 = player2;

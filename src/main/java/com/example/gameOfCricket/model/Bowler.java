@@ -1,15 +1,19 @@
 package com.example.gameOfCricket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity @Getter @Setter
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Bowler extends Batsman{
+
+public class Bowler {
+    @Id
+    @GeneratedValue(strategy= GenerationType.TABLE)
+    private Long id;
+    private String name;
+    private String teamName;
+    private int totalMatchesPlayed;
+    private int totalRunsScored;
     @Column
     int wicketsTaken;
 

@@ -14,10 +14,9 @@ import java.util.List;
 @Transactional
 public interface BatsmanRepository extends JpaRepository<Batsman,Long> {
 
-    @Query(value="SELECT * FROM batsman WHERE team_name=?1",nativeQuery=true)
+    @Query(value="SELECT * FROM batsman WHERE team_name=?1",nativeQuery = true)
 public List<Batsman> getAllBatsmanByTeamName(String teamName);
-//    @Modifying
-//
+
     @Modifying
     @Query(value="UPDATE batsman SET total_runs_scored=total_runs_scored+ ?2 WHERE id = ?1",nativeQuery=true)
     public void updateScore(Long id,int score);

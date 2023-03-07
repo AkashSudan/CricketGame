@@ -1,6 +1,7 @@
 package com.example.gameOfCricket.controller;
 
 import com.example.gameOfCricket.model.Batsman;
+import com.example.gameOfCricket.model.Bowler;
 import com.example.gameOfCricket.service.BatsmanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,10 +32,16 @@ public class BatsmanController {
         batsmanService.addBatsman(batsman);
         return new ResponseEntity<>("added successfully", HttpStatus.OK);
     }
+    @GetMapping("/getBatsmanById/{id}")
+    public Batsman getBatsmanById(@PathVariable Long id)
+    {
+        return batsmanService.getBatsmanById(id);
+    }
     @GetMapping("/updateScore/{id}/{score}")
     public void updateScoreOfBatsman(@PathVariable Long id,@PathVariable int score)
     {
       batsmanService.updateScoreOfBatsman(id,score);
+      batsmanService.updateTotalMatchesPlayed(id);
     }
 
 

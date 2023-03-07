@@ -29,9 +29,20 @@ public class BowlerController {
         bowlerService.addBowler(bowler);
         return new ResponseEntity<>("Bowler Added", HttpStatus.OK);
     }
+    @GetMapping("/getBowlerById/{id}")
+    public Bowler getBowlerById(@PathVariable Long id)
+    {
+        return bowlerService.getBowlerById(id);
+    }
     @GetMapping("/getAll/{teamName}")
     public List<Bowler> getAllBatsmanByTeamName(@PathVariable String teamName)
     {
         return bowlerService.getAllBowlerByTeamName(teamName);
+    }
+    @GetMapping("/updateScore/{id}/{score}")
+    public void updateScoreOfBowler(@PathVariable Long id,@PathVariable int score)
+    {
+        bowlerService.updateScore(id,score);
+        bowlerService.updateTotalMatchesPlayed(id);
     }
 }

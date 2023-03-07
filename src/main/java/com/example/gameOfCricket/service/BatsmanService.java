@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class BatsmanService {
     @Autowired
@@ -17,6 +19,13 @@ public class BatsmanService {
     public List<Batsman> getAllBatsmanByTeamName(String teamName)
     {
         return batsmanRepository.getAllBatsmanByTeamName(teamName);
+    }
+    public Batsman getBatsmanById(Long id)
+    {
+        Optional<Batsman> batsman=batsmanRepository.findById(id);
+        if(batsman.isPresent())
+        return batsman.get();
+        return new Batsman("virat","India");
     }
     public void updateScoreOfBatsman(Long id,int score)
     {
