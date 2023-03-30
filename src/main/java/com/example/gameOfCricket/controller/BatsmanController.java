@@ -3,6 +3,7 @@ package com.example.gameOfCricket.controller;
 import com.example.gameOfCricket.model.Batsman;
 import com.example.gameOfCricket.model.Bowler;
 import com.example.gameOfCricket.service.BatsmanService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/batsman")
+@OpenAPIDefinition
 public class BatsmanController {
     @Autowired
     BatsmanService batsmanService;

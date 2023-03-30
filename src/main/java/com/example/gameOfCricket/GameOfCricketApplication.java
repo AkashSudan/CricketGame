@@ -6,6 +6,8 @@ import com.example.gameOfCricket.model.Bowler;
 import com.example.gameOfCricket.model.Match;
 import com.example.gameOfCricket.model.ScoreCard;
 import com.example.gameOfCricket.repository.BowlerRepository;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,12 +21,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @SpringBootApplication
+@OpenAPIDefinition(info = @Info(title = "GameOfCricket",version = "1.0"))
+@EnableWebMvc
+
+
 public class GameOfCricketApplication {
 
 	public static void main(String[] args) {
@@ -40,10 +48,7 @@ public class GameOfCricketApplication {
 		List<Integer> team1=new ArrayList<>();
 		List<Integer> team2=new ArrayList<>();
 		WebClient client = WebClient.create();
-//		Batsman batsman = (Batsman) client.get()
-//				.uri("http://localhost:8080/batsman/getBatsmanById/1")
-//				.retrieve().bodyToMono(Batsman.class).block();
-//		System.out.println(batsman.getName());
+
 
 		List<Batsman> batsmanList = (List<Batsman>) client.get()
 				.uri("http://localhost:8080/batsman/getAll/"+team1Name)
