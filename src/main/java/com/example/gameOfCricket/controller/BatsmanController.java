@@ -34,16 +34,21 @@ public class BatsmanController {
         batsmanService.addBatsman(batsman);
         return new ResponseEntity<>("added successfully", HttpStatus.OK);
     }
-    @GetMapping("/getBatsmanById/{id}")
-    public Batsman getBatsmanById(@PathVariable Long id)
+    @GetMapping("/getBatsmanByname/{name}")
+    public Batsman getBatsmanById(@PathVariable String name)
     {
-        return batsmanService.getBatsmanById(id);
+        return batsmanService.getBatsmanByName(name);
     }
     @GetMapping("/updateScore/{id}/{score}")
     public void updateScoreOfBatsman(@PathVariable Long id,@PathVariable int score)
     {
       batsmanService.updateScoreOfBatsman(id,score);
       batsmanService.updateTotalMatchesPlayed(id);
+    }
+    @GetMapping("/getBatsmanById/{id}")
+    public Batsman getBatsmanById(@PathVariable Long id)
+    {
+        return batsmanService.getBatsmanById(id);
     }
 
 

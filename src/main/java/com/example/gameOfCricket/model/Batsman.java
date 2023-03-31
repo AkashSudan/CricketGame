@@ -1,16 +1,15 @@
 package com.example.gameOfCricket.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.elasticsearch.annotations.Document;
 
-@Getter
-@Setter
-@Entity
-
+@Data
+@Document(indexName = "batsman")
+@AllArgsConstructor
 public class Batsman {
-    @Id @GeneratedValue(strategy= GenerationType.TABLE)
-    private Long id;
+    @Id
+    Long id;
     private String name;
     private String teamName;
     private int totalMatchesPlayed;

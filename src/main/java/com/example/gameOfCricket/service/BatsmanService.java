@@ -18,22 +18,41 @@ public class BatsmanService {
     }
     public List<Batsman> getAllBatsmanByTeamName(String teamName)
     {
-        return batsmanRepository.getAllBatsmanByTeamName(teamName);
+        return batsmanRepository.findByTeamName(teamName);
+    }
+    public Batsman getBatsmanByName(String name)
+    {
+        Optional<Batsman> batsman=batsmanRepository.findByName(name);
+        if(batsman.isPresent())
+        return batsman.get();
+        return new Batsman("virat","India");
     }
     public Batsman getBatsmanById(Long id)
     {
         Optional<Batsman> batsman=batsmanRepository.findById(id);
         if(batsman.isPresent())
-        return batsman.get();
+            return batsman.get();
         return new Batsman("virat","India");
     }
     public void updateScoreOfBatsman(Long id,int score)
     {
-        batsmanRepository.updateScore(id,score);
+        Optional <Batsman> batsman=batsmanRepository.findById(id);
+        if(batsman.isPresent())
+        {
+            batsman.get().setTotalRunsScored(batsman.get().getTotalRunsScored()+score);
+            batsmanRepository.save(batsman.get());
+        }
+
+
     }
     public void updateTotalMatchesPlayed(Long id)
     {
-        batsmanRepository.updateTotalMatchesPlayed(id);
+        Optional <Batsman> batsman=batsmanRepository.findById(id);
+        if(batsman.isPresent())
+        {
+            batsman.get().setTotalMatchesPlayed(batsman.get().getTotalMatchesPlayed()+1);
+            batsmanRepository.save(batsman.get());
+        }
     }
     public void addBatsman(Batsman batsman)
     {

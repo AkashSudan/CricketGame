@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import org.springframework.data.util.Pair;
@@ -31,6 +32,7 @@ import java.util.List;
 @SpringBootApplication
 @OpenAPIDefinition(info = @Info(title = "GameOfCricket",version = "1.0"))
 @EnableWebMvc
+@EnableElasticsearchRepositories(basePackages = "com.example.gameOfCricket.repository")
 
 
 public class GameOfCricketApplication {
